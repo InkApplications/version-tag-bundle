@@ -1,0 +1,14 @@
+services:
+    ink.twig.version_tag:
+        class: Ink\VersionTagBundle\Twig\VersionTagExtension
+        arguments:
+            - @ink.version_tag_bundle.data.version
+        tags:
+            - { name: twig.extension }
+
+    ink.version_tag_bundle.data.version:
+        public: false
+        class: Ink\VersionTagBundle\Data\Provider\VersionProvider
+        arguments:
+            - %ink_version_tag.file_location%
+
